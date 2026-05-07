@@ -12,6 +12,36 @@
   <meta name="theme-color" content="#070714" />
 
   <style>
+    :root {
+      --bg: #070714;
+      --text: #ffffff;
+      --muted: #e7e7ff;
+      --muted2: #dcdcff;
+      --card1: rgba(106, 0, 255, 0.26);
+      --card2: rgba(0, 195, 255, 0.18);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-2: rgba(255, 255, 255, 0.09);
+      --accent1: #7b2cff;
+      --accent2: #00c3ff;
+      --shadowA: rgba(106, 0, 255, 0.45);
+      --shadowB: rgba(0, 195, 255, 0.22);
+    }
+
+    html[data-theme="light"] {
+      --bg: #f6f7ff;
+      --text: #12122a;
+      --muted: rgba(18, 18, 42, 0.82);
+      --muted2: rgba(18, 18, 42, 0.74);
+      --card1: rgba(123, 44, 255, 0.10);
+      --card2: rgba(0, 195, 255, 0.10);
+      --card-border: rgba(18, 18, 42, 0.12);
+      --glass: rgba(18, 18, 42, 0.06);
+      --glass-2: rgba(18, 18, 42, 0.07);
+      --shadowA: rgba(123, 44, 255, 0.18);
+      --shadowB: rgba(0, 195, 255, 0.14);
+    }
+
     /* ===== ОБЩИЕ НАСТРОЙКИ ===== */
     * {
       margin: 0;
@@ -25,8 +55,8 @@
     }
 
     body {
-      background: #070714;
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -39,12 +69,12 @@
     }
 
     h1, h2, h3 {
-      color: #ffffff;
+      color: var(--text);
       margin-bottom: 18px;
     }
 
     p {
-      color: #e7e7ff;
+      color: var(--muted);
       margin-bottom: 18px;
       font-size: 17px;
     }
@@ -55,7 +85,7 @@
     }
 
     li {
-      color: #f0f0ff;
+      color: color-mix(in srgb, var(--muted) 86%, var(--text) 14%);
       margin-bottom: 8px;
     }
 
@@ -63,15 +93,15 @@
     .neon-card {
       background: linear-gradient(
         135deg,
-        rgba(106, 0, 255, 0.26),
-        rgba(0, 195, 255, 0.18)
+        var(--card1),
+        var(--card2)
       );
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid var(--card-border);
       border-radius: 24px;
       padding: 30px;
       box-shadow:
-        0 0 24px rgba(106, 0, 255, 0.45),
-        0 0 48px rgba(0, 195, 255, 0.22);
+        0 0 24px var(--shadowA),
+        0 0 48px var(--shadowB);
       backdrop-filter: blur(12px);
     }
 
@@ -93,9 +123,9 @@
       padding: 8px 14px;
       border-radius: 999px;
       margin-bottom: 22px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #d8d8ff;
+      background: var(--glass);
+      border: 1px solid var(--card-border);
+      color: color-mix(in srgb, var(--muted) 70%, var(--accent2) 30%);
       font-size: 14px;
     }
 
@@ -109,7 +139,7 @@
     .hero p {
       max-width: 720px;
       margin: 0 auto 30px;
-      color: #dcdcff;
+      color: var(--muted2);
     }
 
     /* ===== КНОПКИ ===== */
@@ -126,10 +156,10 @@
       color: #ffffff;
       font-size: 17px;
       font-weight: 700;
-      background: linear-gradient(45deg, #7b2cff, #00c3ff);
+      background: linear-gradient(45deg, var(--accent1), var(--accent2));
       box-shadow:
-        0 0 18px rgba(123, 44, 255, 0.55),
-        0 0 28px rgba(0, 195, 255, 0.22);
+        0 0 18px color-mix(in srgb, var(--accent1) 55%, transparent),
+        0 0 28px color-mix(in srgb, var(--accent2) 22%, transparent);
       transition: 0.3s ease;
     }
 
@@ -146,8 +176,9 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.09);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: var(--glass-2);
+      border: 1px solid color-mix(in srgb, var(--card-border) 70%, transparent);
+      color: var(--text);
     }
 
     /* ===== ТРИГГЕР ===== */
@@ -156,7 +187,7 @@
     }
 
     .trigger strong {
-      color: #ffffff;
+      color: var(--text);
     }
 
     /* ===== ВЫБОР НАПРАВЛЕНИЙ ===== */
@@ -185,10 +216,10 @@
       margin: 10px 0 18px;
       padding: 10px 14px;
       border-radius: 12px;
-      color: #ffffff;
+      color: var(--text);
       font-weight: 700;
-      background: rgba(0, 195, 255, 0.16);
-      border: 1px solid rgba(0, 195, 255, 0.3);
+      background: color-mix(in srgb, var(--accent2) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 30%, transparent);
     }
 
     /* ===== БЛОК С ФОТО ===== */
@@ -209,7 +240,7 @@
       font-size: 42px;
       font-weight: 800;
       letter-spacing: 2px;
-      color: rgba(255, 255, 255, 0.045);
+      color: color-mix(in srgb, var(--text) 5%, transparent);
       white-space: nowrap;
       pointer-events: none;
     }
@@ -238,15 +269,15 @@
     }
 
     .about-text p {
-      color: #ededff;
+      color: var(--muted);
     }
 
     .steps {
       margin-top: 18px;
       padding: 18px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: color-mix(in srgb, var(--glass) 70%, transparent);
+      border: 1px solid color-mix(in srgb, var(--card-border) 86%, transparent);
     }
 
     .steps p {
@@ -288,30 +319,30 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
-      background: rgba(0, 195, 255, 0.14);
-      border: 1px solid rgba(0, 195, 255, 0.3);
+      background: color-mix(in srgb, var(--accent2) 14%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 30%, transparent);
       color: rgba(255, 255, 255, 0.95);
       white-space: nowrap;
     }
 
     .testimonial-meta {
-      color: rgba(231, 231, 255, 0.8);
+      color: color-mix(in srgb, var(--muted) 92%, transparent);
       font-size: 13px;
       text-align: right;
     }
 
     .testimonial-quote {
       margin-bottom: 14px;
-      color: rgba(231, 231, 255, 0.95);
+      color: var(--muted);
     }
 
     .placeholder-shot {
       margin-top: auto;
       border-radius: 18px;
-      border: 1px dashed rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed color-mix(in srgb, var(--card-border) 78%, transparent);
+      background: color-mix(in srgb, var(--glass) 55%, transparent);
       padding: 16px;
-      color: rgba(231, 231, 255, 0.75);
+      color: var(--muted2);
       font-size: 14px;
     }
 
@@ -326,11 +357,11 @@
       height: 230px;
       border-radius: 18px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      background: color-mix(in srgb, var(--glass) 55%, transparent);
       box-shadow:
-        0 0 18px rgba(123, 44, 255, 0.18),
-        0 0 30px rgba(0, 195, 255, 0.12);
+        0 0 18px color-mix(in srgb, var(--accent1) 18%, transparent),
+        0 0 30px color-mix(in srgb, var(--accent2) 12%, transparent);
     }
 
     .case-media .case-img {
@@ -348,15 +379,15 @@
 
     details {
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: color-mix(in srgb, var(--glass) 70%, transparent);
+      border: 1px solid color-mix(in srgb, var(--card-border) 86%, transparent);
       padding: 14px 16px;
     }
 
     summary {
       cursor: pointer;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.95);
+      color: var(--text);
       list-style: none;
     }
 
@@ -367,7 +398,86 @@
     details p {
       margin-top: 10px;
       margin-bottom: 0;
-      color: rgba(231, 231, 255, 0.9);
+      color: var(--muted);
+    }
+
+    /* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== */
+    .theme-toggle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: color-mix(in srgb, var(--glass) 85%, transparent);
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 16px color-mix(in srgb, var(--accent1) 12%, transparent),
+        0 0 26px color-mix(in srgb, var(--accent2) 10%, transparent);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent2) 60%, transparent);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: color-mix(in srgb, var(--muted) 70%, var(--text) 30%);
+      white-space: nowrap;
+    }
+
+    .theme-toggle-switch {
+      width: 46px;
+      height: 26px;
+      border-radius: 999px;
+      position: relative;
+      border: 1px solid color-mix(in srgb, var(--card-border) 86%, transparent);
+      background: linear-gradient(45deg, color-mix(in srgb, var(--accent1) 35%, transparent), color-mix(in srgb, var(--accent2) 30%, transparent));
+    }
+
+    .theme-toggle-switch::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--text) 92%, transparent);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s ease;
+    }
+
+    html[data-theme="light"] .theme-toggle-switch::after {
+      transform: translateX(20px);
+    }
+
+    /* ===== ЛОКАЛЬНО ТОЛЬКО ТЁМНАЯ ТЕМА (раздел "Обо мне") ===== */
+    html[data-theme="light"] .force-dark {
+      --bg: #070714;
+      --text: #ffffff;
+      --muted: #e7e7ff;
+      --muted2: #dcdcff;
+      --card1: rgba(106, 0, 255, 0.26);
+      --card2: rgba(0, 195, 255, 0.18);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-2: rgba(255, 255, 255, 0.09);
+      --accent1: #7b2cff;
+      --accent2: #00c3ff;
+      --shadowA: rgba(106, 0, 255, 0.45);
+      --shadowB: rgba(0, 195, 255, 0.22);
+      color-scheme: dark;
     }
 
     /* ===== ФИНАЛ ===== */
@@ -442,6 +552,11 @@
 </head>
 
 <body>
+
+  <button class="theme-toggle" type="button" id="themeToggle" aria-label="Переключить тему">
+    <span class="theme-toggle-label" id="themeToggleLabel">Тема: тёмная</span>
+    <span class="theme-toggle-switch" aria-hidden="true"></span>
+  </button>
 
   <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
   <section class="hero">
@@ -554,7 +669,7 @@
   </section>
 
   <!-- ===== БЛОК С ТОБОЙ ===== -->
-  <section>
+  <section class="force-dark">
     <div class="about neon-card">
 
       <div class="about-content">
@@ -702,6 +817,37 @@
       </a>
     </div>
   </section>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = "bc_theme";
+      const root = document.documentElement;
+      const btn = document.getElementById("themeToggle");
+      const label = document.getElementById("themeToggleLabel");
+
+      function apply(theme) {
+        if (theme === "light") root.setAttribute("data-theme", "light");
+        else root.removeAttribute("data-theme");
+
+        const isLight = theme === "light";
+        if (label) label.textContent = "Тема: " + (isLight ? "светлая" : "тёмная");
+        if (btn) btn.setAttribute("aria-label", isLight ? "Переключить на тёмную тему" : "Переключить на светлую тему");
+      }
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "light" || saved === "dark") apply(saved);
+      else apply("dark");
+
+      if (btn) {
+        btn.addEventListener("click", function () {
+          const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+          const next = current === "light" ? "dark" : "light";
+          localStorage.setItem(STORAGE_KEY, next);
+          apply(next);
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
