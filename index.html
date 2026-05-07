@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BusinessCOOL — заработок с телефона и удалённо</title>
+  <meta name="description" content="Онлайн‑школа BusinessCOOL. Помогаю новичкам выбрать направление и начать зарабатывать удалённо: блог/сообщество, автоматизация, первые заявки и первые деньги." />
+  <meta property="og:title" content="BusinessCOOL — старт заработка онлайн" />
+  <meta property="og:description" content="Пошагово, без перегруза. Выбор направления, оформление, автоматизация, первые заявки и первые деньги." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#070714" />
+
+  <style>
+    /* ===== ОБЩИЕ НАСТРОЙКИ ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #070714;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    section {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 55px 20px;
+    }
+
+    h1, h2, h3 {
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    p {
+      color: #e7e7ff;
+      margin-bottom: 18px;
+      font-size: 17px;
+    }
+
+    ul {
+      padding-left: 22px;
+      margin: 18px 0;
+    }
+
+    li {
+      color: #f0f0ff;
+      margin-bottom: 8px;
+    }
+
+    /* ===== НЕОНОВЫЕ КАРТОЧКИ ===== */
+    .neon-card {
+      background: linear-gradient(
+        135deg,
+        rgba(106, 0, 255, 0.26),
+        rgba(0, 195, 255, 0.18)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow:
+        0 0 24px rgba(106, 0, 255, 0.45),
+        0 0 48px rgba(0, 195, 255, 0.22);
+      backdrop-filter: blur(12px);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #d8d8ff;
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      line-height: 1.15;
+      max-width: 850px;
+      margin: 0 auto 20px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 30px;
+      color: #dcdcff;
+    }
+
+    /* ===== КНОПКИ ===== */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 17px 20px;
+      margin: 12px 0;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 700;
+      background: linear-gradient(45deg, #7b2cff, #00c3ff);
+      box-shadow:
+        0 0 18px rgba(123, 44, 255, 0.55),
+        0 0 28px rgba(0, 195, 255, 0.22);
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 26px rgba(123, 44, 255, 0.75),
+        0 0 42px rgba(0, 195, 255, 0.35);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(0, 195, 255, 0.75);
+      outline-offset: 3px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    /* ===== ТРИГГЕР ===== */
+    .trigger {
+      text-align: center;
+    }
+
+    .trigger strong {
+      color: #ffffff;
+    }
+
+    /* ===== ВЫБОР НАПРАВЛЕНИЙ ===== */
+    .choice-title {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .choice-title p {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .direction-card h3 {
+      font-size: 23px;
+    }
+
+    .income {
+      display: inline-block;
+      margin: 10px 0 18px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #ffffff;
+      font-weight: 700;
+      background: rgba(0, 195, 255, 0.16);
+      border: 1px solid rgba(0, 195, 255, 0.3);
+    }
+
+    /* ===== БЛОК С ФОТО ===== */
+    .about {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(12, 12, 28, 0.96), rgba(37, 18, 70, 0.92)),
+        radial-gradient(circle at top right, rgba(0, 195, 255, 0.2), transparent 35%);
+    }
+
+    .about::before {
+      content: "Заработок с телефона  Нейросети  Онлайн доход  Старт с нуля";
+      position: absolute;
+      top: 18px;
+      left: -20px;
+      width: 120%;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.045);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .about-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .about-photo {
+      width: 230px;
+      max-width: 100%;
+      border-radius: 28px;
+      box-shadow:
+        0 0 25px rgba(123, 44, 255, 0.65),
+        0 0 48px rgba(0, 195, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .about-text {
+      text-align: center;
+    }
+
+    .about-text p {
+      color: #ededff;
+    }
+
+    .steps {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .steps p {
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    /* ===== ОТЗЫВЫ / КЕЙСЫ ===== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-top: 18px;
+      width: 100%;
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .testimonials-grid > .neon-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 360px;
+      min-width: 0;
+    }
+
+    .testimonial-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(0, 195, 255, 0.14);
+      border: 1px solid rgba(0, 195, 255, 0.3);
+      color: rgba(255, 255, 255, 0.95);
+      white-space: nowrap;
+    }
+
+    .testimonial-meta {
+      color: rgba(231, 231, 255, 0.8);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .testimonial-quote {
+      margin-bottom: 14px;
+      color: rgba(231, 231, 255, 0.95);
+    }
+
+    .placeholder-shot {
+      margin-top: auto;
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 16px;
+      color: rgba(231, 231, 255, 0.75);
+      font-size: 14px;
+    }
+
+    .case-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .case-media {
+      margin-top: auto;
+      height: 230px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow:
+        0 0 18px rgba(123, 44, 255, 0.18),
+        0 0 30px rgba(0, 195, 255, 0.12);
+    }
+
+    .case-media .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== FAQ ===== */
+    .faq {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    details {
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 14px 16px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      margin-top: 10px;
+      margin-bottom: 0;
+      color: rgba(231, 231, 255, 0.9);
+    }
+
+    /* ===== ФИНАЛ ===== */
+    .final {
+      text-align: center;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about-content {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .about-text {
+        text-align: left;
+      }
+
+      .about-photo {
+        width: 280px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      /* Делаем карточки кейсов визуально одинаковыми по высоте */
+      .testimonials-grid > .neon-card {
+        min-height: 560px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 42px 16px;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .neon-card {
+        padding: 22px;
+        border-radius: 20px;
+      }
+
+      .btn {
+        font-size: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        transition: none !important;
+      }
+      .btn:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="badge">BusinessCOOL • заработок с телефона • поддержка куратора</span>
+
+      <h1>Помогу новичку выбрать направление и начать зарабатывать онлайн</h1>
+
+      <p>
+        В онлайн‑школе <strong>BusinessCOOL</strong> мы идём пошагово: выбираем подходящий путь,
+        оформляем блог/сообщество, подключаем автоматизацию и выходим на первые заявки —
+        всё это можно делать <strong>с телефона</strong> в удобное время.
+      </p>
+
+      <a href="#directions" class="btn">Выбрать направление</a>
+    </div>
+  </section>
+
+  <!-- ===== ТРИГГЕРНЫЙ БЛОК ===== -->
+  <section>
+    <div class="trigger neon-card">
+      <h2>Сейчас информации слишком много — поэтому нужен понятный план</h2>
+      <p>
+        Многие теряются, откладывают старт и так и не доходят до первых денег,
+        потому что не знают, что делать <strong>сегодня</strong> и <strong>завтра</strong>.
+      </p>
+      <p>
+        <strong>Я собрала 3 понятных направления,</strong>
+        с которых реально начать даже без опыта — выбери то, что ближе.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== НАПРАВЛЕНИЯ ===== -->
+  <section id="directions">
+    <div class="choice-title">
+      <h2>Что тебе ближе?</h2>
+      <p>Выбери направление — кнопка откроет сообщения ВК с нужной меткой.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- КАРТОЧКА 1 -->
+      <div class="direction-card neon-card">
+        <h3>Куратор онлайн‑школы</h3>
+        <p>
+          Если тебе комфортно общаться с людьми — можно вести страницу, рассказывать о школе,
+          отвечать на вопросы и помогать новичкам зайти в обучение.
+        </p>
+
+        <ul>
+          <li>без спама и навязывания</li>
+          <li>готовая система продаж</li>
+          <li>шаблоны и скрипты</li>
+          <li>чат-бот и материалы</li>
+        </ul>
+
+        <div class="income">от 40 000 ₽ в первый месяц</div>
+
+        <a href="https://vk.me/antokhinatany?ref=curator" class="btn" target="_blank" rel="noopener noreferrer">
+          Хочу стабильный доход
+        </a>
+      </div>
+
+      <!-- КАРТОЧКА 2 -->
+      <div class="direction-card neon-card">
+        <h3>Онлайн-профессия</h3>
+        <p>
+          Осваиваешь навыки, за которые платят:
+          SMM, нейросети, дизайн, боты, ВК, маркетинг и другие направления.
+        </p>
+
+        <ul>
+          <li>40+ курсов внутри</li>
+          <li>поддержка и чаты</li>
+          <li>бессрочный доступ</li>
+          <li>обновления без доплат</li>
+        </ul>
+
+        <div class="income">от 40 000 ₽ и выше</div>
+
+        <a href="https://vk.me/antokhinatany?ref=profession" class="btn" target="_blank" rel="noopener noreferrer">
+          Хочу профессию
+        </a>
+      </div>
+
+      <!-- КАРТОЧКА 3 -->
+      <div class="direction-card neon-card">
+        <h3>Простые задания</h3>
+        <p>
+          Начинаешь с понятных заданий без опыта:
+          лайки, подписки, опросы, контент и установка приложений.
+        </p>
+
+        <ul>
+          <li>можно стартовать быстро</li>
+          <li>не нужны сложные навыки</li>
+          <li>подходит как подработка</li>
+          <li>есть платформы и поддержка</li>
+        </ul>
+
+        <div class="income">300–500 ₽ в день</div>
+
+        <a href="https://vk.me/antokhinatany?ref=easy" class="btn" target="_blank" rel="noopener noreferrer">
+          Хочу начать с простого
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== БЛОК С ТОБОЙ ===== -->
+  <section>
+    <div class="about neon-card">
+
+      <div class="about-content">
+
+        <!-- Фото должно лежать рядом с HTML-файлом -->
+        <img class="about-photo" src="Tatjana.jpg" alt="Татьяна — куратор BusinessCOOL" loading="lazy" decoding="async" width="280" height="340">
+
+        <div class="about-text">
+          <h2>Куратор BusinessCOOL — чтобы ты не “плыла” в информации</h2>
+
+          <p>
+            Можно пытаться разобраться самостоятельно: тратить время,
+            путаться в информации и откладывать старт.
+          </p>
+
+          <p>
+            А можно пойти со мной и пройти этот путь быстрее, спокойнее
+            и понятнее.
+          </p>
+
+          <p>
+            Я — Татьяна Антохина, куратор онлайн‑школы <strong>BusinessCOOL</strong>. Помогаю новичкам разобраться,
+            выбрать направление и сделать первые шаги к заработку удалённо.
+          </p>
+
+          <div class="steps">
+            <p>Со мной ты:</p>
+            <p>— поймёшь, с чего начать;</p>
+            <p>— оформишь страницу или сообщество;</p>
+            <p>— подключишь автоматизацию;</p>
+            <p>— начнёшь получать заявки;</p>
+            <p>— сделаешь первые шаги к доходу.</p>
+          </div>
+
+          <a href="https://vk.me/antokhinatany?ref=with_me" class="btn" target="_blank" rel="noopener noreferrer">
+            Хочу разобраться с тобой
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== ОТЗЫВЫ / КЕЙСЫ ===== -->
+  <section id="cases">
+    <div class="neon-card">
+      <h2>Отзывы и кейсы учеников</h2>
+      <p>
+        Ниже — примеры результатов учеников BusinessCOOL.
+      </p>
+
+      <div class="testimonials-grid">
+        <div class="neon-card">
+          <div class="testimonial-top">
+            <span class="testimonial-badge">Результат: первые деньги</span>
+          </div>
+          <p class="testimonial-quote">
+            “Разобралась, с чего начать, оформила страницу и получила первые заявки. Дальше стало понятнее,
+            что делать каждый день.”
+          </p>
+          <div class="case-media">
+            <img class="case-img" src="img/case-1.png" alt="Скрин результата ученика: пример заработка" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="neon-card">
+          <div class="testimonial-top">
+            <span class="testimonial-badge">Результат: подработка</span>
+          </div>
+          <p class="testimonial-quote">
+            “Удобно, что можно с телефона. Делала шаги в своём темпе, без перегруза — и появился регулярный
+            небольшой доход.”
+          </p>
+          <div class="case-media">
+            <img class="case-img" src="img/case-4.png" alt="Скрин результата ученика: пример оплаты за работу" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="neon-card">
+          <div class="testimonial-top">
+            <span class="testimonial-badge">Результат: новое направление</span>
+          </div>
+          <p class="testimonial-quote">
+            “Выбрала направление, получила пошаговый план, сделала первые проекты и начала собирать портфолио.
+            Куратор реально помогает не срываться.”
+          </p>
+          <div class="case-media">
+            <img class="case-img" src="img/case-5.png" alt="Скрин результатов учеников: примеры" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <a href="https://vk.me/antokhinatany?ref=start" class="btn" style="margin-top: 18px;" target="_blank" rel="noopener noreferrer">
+        Хочу так же — написать куратору
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="neon-card">
+      <h2>FAQ — частые вопросы</h2>
+      <div class="faq">
+        <details>
+          <summary>Подойдёт ли без опыта?</summary>
+          <p>Да, обучение подходит новичкам: всё объясняется пошагово простым языком.</p>
+        </details>
+        <details>
+          <summary>Сколько времени нужно в день?</summary>
+          <p>В среднем 1–3 часа в день. Можно совмещать с основной работой и делами.</p>
+        </details>
+        <details>
+          <summary>Что нужно для старта?</summary>
+          <p>Телефон, интернет и желание разобраться.</p>
+        </details>
+        <details>
+          <summary>Как быстро можно получить результат?</summary>
+          <p>Первые результаты зависят от активности. Многие начинают делать первые шаги уже во время обучения.</p>
+        </details>
+      </div>
+
+      <a href="https://vk.me/antokhinatany?ref=with_me" class="btn" style="margin-top: 18px;" target="_blank" rel="noopener noreferrer">
+        Задать вопрос в сообщениях
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== ФИНАЛЬНЫЙ БЛОК ===== -->
+  <section class="final">
+    <div class="neon-card">
+      <h2>Начать можно уже сейчас</h2>
+
+      <p>
+        Без опыта, без сложных технических настроек и без ощущения,
+        что ты опять одна во всём этом разбираешься.
+      </p>
+
+      <a href="https://vk.me/antokhinatany?ref=start" class="btn" target="_blank" rel="noopener noreferrer">
+        Написать в сообщения
+      </a>
+
+      <a href="#directions" class="btn btn-secondary">
+        Вернуться к выбору направления
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>
